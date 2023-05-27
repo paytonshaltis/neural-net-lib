@@ -3,9 +3,9 @@ Contains the main train() method that uses the backpropagation
 and training algorithms to tune the neural network.
 """
 
-# Helper function for the train() function which essentially just
-# applies the forward() function to an input matrix. Returns
-# this layer's output, which is the input for the next layer.
+# The main prediction method. Used during the training process, though
+# will primarily be used for making predictions after a neural network
+# has been trained.
 def predict(network, input):
 
   # The output initially starts as the input to this layer.
