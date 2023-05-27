@@ -3,6 +3,8 @@ Contains the main train() method that uses the backpropagation
 and training algorithms to tune the neural network.
 """
 
+import math
+
 # The main prediction method. Used during the training process, though
 # will primarily be used for making predictions after a neural network
 # has been trained.
@@ -28,9 +30,11 @@ def train(
         x_train, y_train,     # The input and output matrices of training data.
         epochs = 1000,        # The number of iterations of training.
         learning_rate = 0.01, # The advanced or decreased learning rate.
-        verbose = True):      # Prints error / cost values during execution.
+        verbose = True,       # Prints error / cost values during execution.
+        updates = False):     # Prints updates on the network's progress.     
   
   # Use epochs to dictate the number of training iterations.
+  percentage = 0
   for iteration in range(epochs):
     error = 0
 
@@ -51,6 +55,14 @@ def train(
       gradient = loss_prime(y, output)
       for layer in reversed(network):
         gradient = layer.backward(gradient, learning_rate)
+
+      # If updates is marked as true, print a percentage of completion
+      # at each 1% interval.
+      if updates:
+        new_percentage = math.floor((iteration / epochs) * 100)
+        if(new_percentage > percentage):
+          percentage = new_percentage
+          print(f"Training {percentage}% complete...")
 
       # Finally, compute and print the error for each epoch if verbose
       # was marked as true.
