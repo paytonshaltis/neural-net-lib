@@ -14,8 +14,7 @@ class Activation(Layer):
     self.activation = activation
     self.activation_prime = activation_prime
 
-  # Applies the activation function to a given input layer,
-  # returning the layer with values mapped to [0,1].
+  # Applies the activation function to a given input layer.
   def forward(self, input):
     self.input = input
     return self.activation(self.input)
