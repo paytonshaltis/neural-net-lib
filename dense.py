@@ -9,6 +9,7 @@ import numpy as np
 from layer import Layer
 
 class Dense(Layer):
+  
   # Initialize weights and biases with random values.
   def __init__(self, input_size, output_size):
     
