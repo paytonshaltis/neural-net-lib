@@ -35,6 +35,7 @@ def train(
         updates = False):     # Prints updates on the network's progress.     
   
   # Use epochs to dictate the number of training iterations.
+  errors = []
   percentage = 0
   for iteration in range(epochs):
     error = 0
@@ -69,7 +70,11 @@ def train(
     # was marked as true.
     if verbose:
       error /= len(x_train)
+      errors.append(error)
       print(f"Epoch {iteration + 1}/{epochs}, Error={error}")
+    
+  # Return the list of errors for each epoch.
+  return errors
 
 
 # Returns the accuracy of a network using the provided input and labels,
