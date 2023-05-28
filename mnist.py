@@ -6,7 +6,7 @@ hand-written numbers.
 import numpy as np
 import math
 from dense import Dense
-from tanh import Tanh
+from activations.sig import Sig
 from mse import mse, mse_prime
 from network import train, predict
 
@@ -32,26 +32,26 @@ data = np.load('./data/mnist.npz')
 x_train, y_train, x_test, y_test = data['x_train'], data['y_train'], data['x_test'], data['y_test']
 
 # Prepare 1000 training samples for the network.
-X = np.reshape(x_train[:10000], (10000, 28 * 28, 1))
+X = np.reshape(x_train[:60000], (60000, 28 * 28, 1))
 
 # The Y matrix must be a 10x1 matrix for each label. The value at the
 # index of the label is set to 1, and all other values are set to 0.
-Y = np.zeros((10000, 10, 1))
-for i in range(10000):
+Y = np.zeros((60000, 10, 1))
+for i in range(60000):
   Y[i][y_train[i]] = 1
 
 # Create a network with 2 layers of 16 hidden neurons each.
 network = [
-  Dense(28 * 28, 16),
-  Tanh(),
-  Dense(16, 16),
-  Tanh(),
-  Dense(16, 10),
-  Tanh()
+  Dense(28 * 28, 40),
+  Sig(),
+  Dense(40, 40),
+  Sig(),
+  Dense(40, 10),
+  Sig()
 ]
 
 # Train the network using the training data.
-train(network, mse, mse_prime, X, Y, epochs=1000, learning_rate=0.1, verbose=False, updates=True)
+train(network, mse, mse_prime, X, Y, epochs=100, learning_rate=0.075, verbose=True, updates=False)
 
 # While the user wants to continue, predict the value of a random
 # test sample and print the image and the prediction.
