@@ -8,7 +8,7 @@ import math
 from dense import Dense
 from activations.sig import Sig
 from mse import mse, mse_prime
-from network import train, predict
+from network import train, predict, acc
 
 # Prints out a 28x28 image of the given hand-written letter. Uses
 # various ASCII characters to alter the lighting values for each pixel.
@@ -51,7 +51,10 @@ network = [
 ]
 
 # Train the network using the training data.
-train(network, mse, mse_prime, X, Y, epochs=100, learning_rate=0.075, verbose=True, updates=False)
+train(network, mse, mse_prime, X, Y, epochs=50, learning_rate=0.01, verbose=True, updates=False)
+
+# Print the accuracy of the network using the test data.
+print(f"Accuracy: {acc(network, x_test, y_test)}")
 
 # While the user wants to continue, predict the value of a random
 # test sample and print the image and the prediction.
