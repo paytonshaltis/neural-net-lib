@@ -3,6 +3,7 @@ Contains the main train() method that uses the backpropagation
 and training algorithms to tune the neural network.
 """
 
+import numpy as np
 import math
 
 # The main prediction method. Used during the training process, though
@@ -64,8 +65,17 @@ def train(
           percentage = new_percentage
           print(f"Training {percentage}% complete...")
 
-      # Finally, compute and print the error for each epoch if verbose
-      # was marked as true.
-      if verbose:
-        error /= len(x_train)
-        print(f"Epoch {iteration + 1}/{epochs}, Error={error}")
+    # Finally, compute and print the error for each epoch if verbose
+    # was marked as true.
+    if verbose:
+      error /= len(x_train)
+      print(f"Epoch {iteration + 1}/{epochs}, Error={error}")
+
+
+# Returns the accuracy of a network using the provided input and labels,
+# returning a number in the range [0,1].
+def acc(network, input, labels):
+  correct = 0
+  for x, y in zip(input, labels):
+    correct += 1 if np.argmax(predict(network, np.reshape(x, (28 * 28, 1)))) == y else 0
+  return correct / len(labels)
