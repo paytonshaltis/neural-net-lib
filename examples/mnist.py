@@ -8,9 +8,9 @@ sys.path.append("..")
 
 import numpy as np
 import math
-from dense import Dense
+from layers.dense import Dense
 from activations.sig import Sig
-from mse import mse, mse_prime
+from losses.mse import mse, mse_prime
 from network import train, predict, acc
 
 # Prints out a 28x28 image of the given hand-written letter. Uses

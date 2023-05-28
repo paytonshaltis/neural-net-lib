@@ -21,8 +21,8 @@ sys.path.append("..")
 
 import numpy as np
 from activations.tanh import Tanh
-from dense import Dense
-from mse import mse, mse_prime
+from layers.dense import Dense
+from losses.mse import mse, mse_prime
 from network import train, predict
 
 # Define the input arrays. For training data, a matrix of data and a 

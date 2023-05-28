@@ -6,7 +6,7 @@ derivative.
 """
 
 import numpy as np
-from activation import Activation
+from layers.activation import Activation
 
 class Relu(Activation):
     

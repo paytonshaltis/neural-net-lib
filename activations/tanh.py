@@ -7,7 +7,7 @@ function, maps its range to [0,1] instead.
 """
 
 import numpy as np
-from activation import Activation
+from layers.activation import Activation
 
 class Tanh(Activation):
 

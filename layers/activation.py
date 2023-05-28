@@ -6,7 +6,7 @@ and a value for backpropagation using the activation_prime function.
 """
 
 import numpy as np
-from layer import Layer
+from layers.layer import Layer
 
 class Activation(Layer):
 

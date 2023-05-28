@@ -6,7 +6,7 @@ of the simple base class Layer.
 """
 
 import numpy as np
-from layer import Layer
+from layers.layer import Layer
 
 class Dense(Layer):
   
