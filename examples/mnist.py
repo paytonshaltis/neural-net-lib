@@ -3,6 +3,9 @@ Sample code for training a neural network on the MNIST dataset of
 hand-written numbers.
 """
 
+import sys
+sys.path.append("..")
+
 import numpy as np
 import math
 from dense import Dense
@@ -28,7 +31,7 @@ def print_mnist_image(image):
         print()
 
 # Load the data from the MNIST dataset.
-data = np.load('./data/mnist.npz')
+data = np.load('../data/mnist.npz')
 x_train, y_train, x_test, y_test = data['x_train'], data['y_train'], data['x_test'], data['y_test']
 
 # Prepare 1000 training samples for the network.
@@ -51,7 +54,7 @@ network = [
 ]
 
 # Train the network using the training data.
-train(network, mse, mse_prime, X, Y, epochs=50, learning_rate=0.01, verbose=True, updates=False)
+train(network, mse, mse_prime, X, Y, epochs=100, learning_rate=0.01, verbose=True, updates=False)
 
 # Print the accuracy of the network using the test data.
 print(f"Accuracy: {acc(network, x_test, y_test)}")

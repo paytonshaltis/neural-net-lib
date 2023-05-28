@@ -16,9 +16,12 @@ XOR definition:
 |   1   |   1   |   0    |
 """
 
+import sys
+sys.path.append("..")
+
 import numpy as np
-from dense import Dense
 from activations.tanh import Tanh
+from dense import Dense
 from mse import mse, mse_prime
 from network import train, predict
 
