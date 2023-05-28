@@ -18,7 +18,7 @@ XOR definition:
 
 import numpy as np
 from dense import Dense
-from tanh import Tanh
+from activations.tanh import Tanh
 from mse import mse, mse_prime
 from network import train, predict
 
@@ -65,7 +65,7 @@ network = [
 
 # Finally, call the train() function with the proper pieces of training
 # data, labels, error functions, epochs, learning rates, and verbosity.
-train(network, mse, mse_prime, X, Y, epochs=10000, learning_rate=0.1, verbose=False)
+train(network, mse, mse_prime, X, Y, epochs=1000, learning_rate=0.1, verbose=False, updates=False, x_test=None, y_test=None)
 
 # Once the network has received some training, we can pass some 'untrained'
 # data in an analyze the values of the final layer. We should see almost complete
