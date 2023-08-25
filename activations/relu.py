@@ -12,8 +12,11 @@ class Relu(Activation):
     
     def __init__(self):
       # Defines the RELU function and its derivative.
-      relu = lambda x: np.maximum(0, x)
-      relu_prime = lambda x: np.where(x > 0, 1, 0)
+      def relu(x):
+        return np.maximum(0, x)
+      
+      def relu_prime(x):
+        return np.where(x > 0, 1, 0)
   
       # Call the constructor of the base Activation class in
       # order to assign these two functions to the object.
